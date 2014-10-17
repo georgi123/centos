@@ -1,0 +1,14 @@
+#!/bin/bash
+sleep 5
+git clone git://github.com/ansible/ansible.git --recursive
+cd ./ansible
+source ./hacking/env-setup
+sudo easy_install pip
+sudo pip install paramiko PyYAML jinja2 httplib2
+git pull --rebase
+git submodule update --init --recursive
+sleep 20
+echo "127.0.0.1" > ~/ansible_hosts
+export ANSIBLE_HOSTS=~/ansible_hosts
+#test ansible
+export ANSIBLE_HOSTS=~/ansible_hosts
